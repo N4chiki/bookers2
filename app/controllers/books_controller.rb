@@ -14,6 +14,11 @@ class BooksController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+
   def destroy
     book = Book.find(params[:id])
     book.destroy
@@ -21,7 +26,8 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.page(params[:page])
+    @books = Book.includes(:user).page(params[:page])
+    @book = Book.new
   end
 
   def show
