@@ -1,7 +1,7 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
 
-    <%= render "shared/sidebar", book: @book %>
+    <%= render "shared/sidebar", new_book: @new_book, user_info: @book.user %>
 
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
@@ -16,6 +16,10 @@
             </td>
             <td><%= link_to @book.title, book_path(@book) %></td>
             <td><%= @book.body %></td>
+            <% if @book.user == current_user %>
+              <td><%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
+              <td><%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-sm btn-danger" %></td>
+            <% end %>
           </tr>
         </tbody>
       </table>
