@@ -10,7 +10,7 @@
           <tr>
             <td>
               <%= link_to user_path(@book.user) do %>
-                  <%= image_tag @book.user.get_image %>
+                  <%= image_tag @book.user.get_profile_image %>
               <% end %>
               <br><%= link_to @book.user.name, user_path(@book.user) %>
             </td>
